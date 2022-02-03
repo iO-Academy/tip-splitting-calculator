@@ -1,38 +1,97 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background: #b8dee1;
+  font-family: monospace;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app {
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 20px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  align-items: stretch;
+  width: 850px;
+  margin: 50px auto;
 }
 
-.App-link {
-  color: #61dafb;
+.inputs {
+  width: 50%;
+  margin-right: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+label {
+  color: #666666;
+  font-size: 12px;
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type=text] {
+  background: #f0fafc;
+  color: #315a5c;
+  font-weight: bold;
+  font-size: 18px;
+  outline: none;
+  border: 2px solid #315a5c;
+  border-radius: 5px;
+  padding: 10px 15px;
+  text-align: right;
+  width: 100%;
+}
+
+.tip-amount {
+  margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.tip-amount button {
+  background: #315a5c;
+  color: #f0fafc;
+  text-align: center;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  width: 30%;
+  margin-bottom: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.tip-amount button:hover,
+.tip-amount button.active {
+  background: #9fe8df;
+  color: #315a5c;
+}
+
+.tip-amount input {
+  width: 29%;
+  outline: none;
+  border: 2px solid #315a5c;
+  border-radius: 5px;
+  background: #f0fafc;
+  color: #315a5c;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: right;
+}
+
+.output {
+  background: #315a5c;
+  border-radius: 15px;
+  padding: 20px;
+  height: 100%;
+  margin-left: 10px;
+  width: 50%;
+}
+
+.output h2 {
+  color: #9fe8df;
 }
