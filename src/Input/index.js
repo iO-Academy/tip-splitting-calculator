@@ -1,6 +1,6 @@
-const Input = ({type, onChange, value, min}) => {
+const Input = ({type, onChange, value, min, max}) => {
     return (
-        <input type={type} onChange={onChange} value={value} min={min} />
+        <input type={type} onChange={onChange} value={value} min={min} max={max}/>
     );
 }
 

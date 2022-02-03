@@ -10,10 +10,17 @@ function App() {
     const [tipTotal, setTipTotal] = useState(0.00)
     const [totalBill, setTotalBill] = useState(0.00)
 
-    const selectTip = (e) => {
+    const selectTip = e => {
         const tip = parseFloat(e.target.value)
         let newOptions = {'0.05': '', '0.1': '', '0.15': '', '0.25': '', '0.5': ''}
         newOptions[e.target.value] = 'active'
+        setOptions(newOptions)
+        setTipAmount(tip)
+    }
+
+    const setCustomTip = e => {
+        const tip = parseFloat(e.target.value) / 100
+        let newOptions = {'0.05': '', '0.1': '', '0.15': '', '0.25': '', '0.5': ''}
         setOptions(newOptions)
         setTipAmount(tip)
     }
@@ -56,7 +63,7 @@ function App() {
             <button value="0.15" className={options['0.15']} onClick={selectTip}>15%</button>
             <button value="0.25" className={options['0.25']} onClick={selectTip}>25%</button>
             <button value="0.5" className={options['0.5']} onClick={selectTip}>50%</button>
-            <Input type="number" />
+            <Input type="number" onChange={setCustomTip} min={1} max={100} />
         </div>
 
         <label>Number of people</label>
