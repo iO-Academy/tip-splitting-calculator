@@ -39,7 +39,7 @@ const App = () => {
 
     const calculate = () => {
         if (bill > 0 && peopleCount > 0 && tipAmount > 0) {
-            setTipTotal(parseFloat(((bill * tipAmount) / peopleCount).toFixed(2)))
+            setTipTotal(parseFloat(((bill * tipAmount) / peopleCount)))
         }
     }
 
@@ -57,7 +57,7 @@ const App = () => {
     }, [peopleCount, bill, tipAmount])
 
     useEffect(() => {
-        setTotalBill(parseFloat((bill / peopleCount) + tipTotal).toFixed(2))
+        setTotalBill(parseFloat((bill / peopleCount) + tipTotal))
     }, [tipTotal])
 
     return (

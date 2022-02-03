@@ -11,7 +11,7 @@ const FormOutputs = ({tipTotal, totalBill, reset}) => {
                         <span>/ person</span>
                     </div>
                     <div>
-                        <h2>£{tipTotal}</h2>
+                        <h2>£{tipTotal.toFixed(2)}</h2>
                     </div>
                 </div>
 
@@ -21,7 +21,7 @@ const FormOutputs = ({tipTotal, totalBill, reset}) => {
                         <span>/ person</span>
                     </div>
                     <div>
-                        <h2>£{totalBill}</h2>
+                        <h2>£{totalBill.toFixed(2)}</h2>
                     </div>
                 </div>
             </div>
