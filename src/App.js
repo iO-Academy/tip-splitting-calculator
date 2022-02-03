@@ -42,19 +42,28 @@ function App() {
         }
     }
 
+    const reset = () => {
+        setBill(0)
+        setPeopleCount(1)
+        setTipAmount(0.05)
+        setTipTotal(0.00)
+        setTotalBill(0.00)
+        setOptions({'0.05': '', '0.1': '', '0.15': '', '0.25': '', '0.5': ''})
+    }
+
     useEffect(() => {
         calculate()
     }, [peopleCount, bill, tipAmount])
 
     useEffect(() => {
-        setTotalBill(((bill / peopleCount) + tipTotal).toFixed(2))
+        setTotalBill(parseFloat((bill / peopleCount) + tipTotal).toFixed(2))
     }, [tipTotal])
 
   return (
     <div className="app">
       <div className="inputs">
         <label>Bill</label>
-        <Input type="text" onChange={saveBill} />
+        <Input type="text" onChange={saveBill} value={bill} />
 
         <label>Select Tip %</label>
         <div className="tip-amount">
@@ -71,16 +80,28 @@ function App() {
       </div>
       <div className="output">
           <div>
-              <h4>Tip Amount</h4>
-              <h2>£{tipTotal}</h2>
+              <div className="columns">
+                  <div>
+                      <h4>Tip Amount</h4>
+                      <span>/ person</span>
+                  </div>
+                  <div>
+                      <h2>£{tipTotal}</h2>
+                  </div>
+              </div>
+
+              <div className="columns">
+                  <div>
+                      <h4>Total</h4>
+                      <span>/ person</span>
+                  </div>
+                  <div>
+                      <h2>£{totalBill}</h2>
+                  </div>
+              </div>
           </div>
 
-          <div>
-              <h4>Total</h4>
-              <h2>£{totalBill}</h2>
-          </div>
-
-          <button>Reset</button>
+          <button onClick={reset}>Reset</button>
       </div>
     </div>
   );

@@ -11,23 +11,23 @@ body {
   background: #ffffff;
   border-radius: 15px;
   padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: stretch;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   width: 850px;
   margin: 50px auto;
 }
 
 .inputs {
-  width: 50%;
+  width: 100%;
   margin-right: 10px;
 }
 
 label {
   color: #666666;
-  font-size: 12px;
+  font-size: 14px;
   display: block;
   margin-bottom: 5px;
+  margin-top: 30px;
 }
 
 input[type=text],
@@ -73,26 +73,55 @@ input[type=number] {
 }
 
 .tip-amount input {
-  width: 29%;
-  outline: none;
-  border: 2px solid #315a5c;
-  border-radius: 5px;
-  background: #f0fafc;
-  color: #315a5c;
-  font-weight: bold;
-  font-size: 18px;
-  text-align: right;
+  width: 30%;
+  height: 41px;
 }
 
 .output {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background: #315a5c;
   border-radius: 15px;
-  padding: 20px;
+  padding: 30px;
   height: 100%;
   margin-left: 10px;
-  width: 50%;
+  width: 100%;
 }
 
 .output h2 {
   color: #9fe8df;
+  font-size: 30px;
+  margin-top: 18px;
+}
+
+.output h4 {
+  font-size: 14px;
+  color: #fff;
+  margin-bottom: 5px;
+  margin-top: 18px;
+}
+
+.output span {
+  color: #fff;
+}
+
+.output .columns {
+  display: flex;
+}
+
+.output .columns div {
+  width: 50%;
+}
+
+.output button {
+  width: 100%;
+  background-color: #9fe8df;
+  color: #315a5c;
+  border-radius: 5px;
+  border: none;
+  font-size: 20px;
+  padding: 10px 0;
+  text-transform: uppercase;
+  font-weight: bold;
 }
