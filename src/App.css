@@ -30,7 +30,8 @@ label {
   margin-bottom: 5px;
 }
 
-input[type=text] {
+input[type=text],
+input[type=number] {
   background: #f0fafc;
   color: #315a5c;
   font-weight: bold;
