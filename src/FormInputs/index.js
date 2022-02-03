@@ -1,5 +1,7 @@
 import Input from "./Input"
 import './FormInputs.css'
+import TipAmount from "./TipAmount";
+import TipAmountButton from "./TipAmount/TipAmountButton";
 
 const FormInputs = ({selectTip, selectCustomTip, saveBill, bill, options, peopleCount, savePeople}) => {
     return (
@@ -8,14 +10,13 @@ const FormInputs = ({selectTip, selectCustomTip, saveBill, bill, options, people
             <Input type="text" onChange={saveBill} value={bill} />
 
             <label>Select Tip %</label>
-            <div className="tip-amount">
-                <button value="0.05" className={options['0.05']} onClick={selectTip}>5%</button>
-                <button value="0.1" className={options['0.1']} onClick={selectTip}>10%</button>
-                <button value="0.15" className={options['0.15']} onClick={selectTip}>15%</button>
-                <button value="0.25" className={options['0.25']} onClick={selectTip}>25%</button>
-                <button value="0.5" className={options['0.5']} onClick={selectTip}>50%</button>
-                <Input type="number" onChange={selectCustomTip} min={1} max={100} />
-            </div>
+            <TipAmount selectCustomTip={selectCustomTip}>
+                <TipAmountButton className={options['0.05']} value="0.05" clicker={selectTip} text="5%" />
+                <TipAmountButton className={options['0.10']} value="0.10" clicker={selectTip} text="10%" />
+                <TipAmountButton className={options['0.15']} value="0.15" clicker={selectTip} text="15%" />
+                <TipAmountButton className={options['0.25']} value="0.25" clicker={selectTip} text="25%" />
+                <TipAmountButton className={options['0.5']} value="0.5" clicker={selectTip} text="50%" />
+            </TipAmount>
 
             <label>Number of people</label>
             <Input type="number" value={peopleCount} onChange={savePeople} min={1}/>
