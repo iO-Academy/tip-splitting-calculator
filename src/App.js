@@ -1,8 +1,9 @@
-import './App.css';
-import Input from "./Input";
-import {useEffect, useState} from "react";
+import './App.css'
+import FormInputs from "./FormInputs"
+import {useEffect, useState} from "react"
+import FormOutputs from "./FormOutputs"
 
-function App() {
+const App = () => {
     const [bill, setBill] = useState(0)
     const [tipAmount, setTipAmount] = useState(0.05)
     const [options, setOptions] = useState({'0.05': '', '0.1': '', '0.15': '', '0.25': '', '0.5': ''})
@@ -18,7 +19,7 @@ function App() {
         setTipAmount(tip)
     }
 
-    const setCustomTip = e => {
+    const selectCustomTip = e => {
         const tip = parseFloat(e.target.value) / 100
         let newOptions = {'0.05': '', '0.1': '', '0.15': '', '0.25': '', '0.5': ''}
         setOptions(newOptions)
@@ -59,52 +60,24 @@ function App() {
         setTotalBill(parseFloat((bill / peopleCount) + tipTotal).toFixed(2))
     }, [tipTotal])
 
-  return (
-    <div className="app">
-      <div className="inputs">
-        <label>Bill</label>
-        <Input type="text" onChange={saveBill} value={bill} />
-
-        <label>Select Tip %</label>
-        <div className="tip-amount">
-            <button value="0.05" className={options['0.05']} onClick={selectTip}>5%</button>
-            <button value="0.1" className={options['0.1']} onClick={selectTip}>10%</button>
-            <button value="0.15" className={options['0.15']} onClick={selectTip}>15%</button>
-            <button value="0.25" className={options['0.25']} onClick={selectTip}>25%</button>
-            <button value="0.5" className={options['0.5']} onClick={selectTip}>50%</button>
-            <Input type="number" onChange={setCustomTip} min={1} max={100} />
+    return (
+        <div className="app">
+            <FormInputs
+                selectTip={selectTip}
+                selectCustomTip={selectCustomTip}
+                saveBill={saveBill}
+                bill={bill}
+                options={options}
+                peopleCount={peopleCount}
+                savePeople={savePeople}
+            />
+            <FormOutputs
+                tipTotal={tipTotal}
+                totalBill={totalBill}
+                reset={reset}
+            />
         </div>
-
-        <label>Number of people</label>
-        <Input type="number" value={peopleCount} onChange={savePeople} min={1}/>
-      </div>
-      <div className="output">
-          <div>
-              <div className="columns">
-                  <div>
-                      <h4>Tip Amount</h4>
-                      <span>/ person</span>
-                  </div>
-                  <div>
-                      <h2>£{tipTotal}</h2>
-                  </div>
-              </div>
-
-              <div className="columns">
-                  <div>
-                      <h4>Total</h4>
-                      <span>/ person</span>
-                  </div>
-                  <div>
-                      <h2>£{totalBill}</h2>
-                  </div>
-              </div>
-          </div>
-
-          <button onClick={reset}>Reset</button>
-      </div>
-    </div>
-  );
+    );
 }
 
-export default App;
+export default App
