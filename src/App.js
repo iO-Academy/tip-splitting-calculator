@@ -1,6 +1,6 @@
 import './App.css';
 import Input from "./Input";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 function App() {
     const [bill, setBill] = useState(0)
@@ -16,28 +16,32 @@ function App() {
         newOptions[e.target.value] = 'active'
         setOptions(newOptions)
         setTipAmount(tip)
-        calculate()
     }
 
     const saveBill = e => {
-        if (e.target.value != '') {
+        if (e.target.value !== '') {
             setBill(parseFloat(e.target.value))
-            calculate()
         }
     }
     const savePeople = e => {
-        if (e.target.value != '') {
+        if (e.target.value !== '') {
             setPeopleCount(parseInt(e.target.value))
-            calculate()
         }
     }
 
     const calculate = () => {
         if (bill > 0 && peopleCount > 0 && tipAmount > 0) {
-            setTipTotal((bill*tipAmount).toFixed(2))
-            setTotalBill((bill+tipTotal).toFixed(2))
+            setTipTotal(parseFloat((bill*tipAmount).toFixed(2)))
         }
     }
+
+    useEffect(() => {
+        calculate()
+    }, [peopleCount, bill, tipAmount])
+
+    useEffect(() => {
+        setTotalBill((bill+tipTotal).toFixed(2))
+    }, [tipTotal])
 
   return (
     <div className="app">
