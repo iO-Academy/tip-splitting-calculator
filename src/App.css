@@ -17,3 +17,9 @@ body {
   margin: 50px auto;
 }
 
+@media screen and (max-width:860px) {
+  .app {
+    grid-template-columns: 1fr;
+    max-width: 95%;
+  }
+}
