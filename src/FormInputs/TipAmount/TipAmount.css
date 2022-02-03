@@ -1,0 +1,11 @@
+.tip-amount {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.tip-amount input {
+    width: 30%;
+    height: 41px;
+}
